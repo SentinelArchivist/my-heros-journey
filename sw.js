@@ -1,13 +1,13 @@
 // sw.js - very basic for installability and minimal offline
-const CACHE_NAME = 'my-hero-v1';
+const CACHE_NAME = 'my-hero-v1'; // Consider incrementing cache name to v2 after these changes to force update
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/app.js',
-  '/boss.js', // Added boss.js to cache
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  './', // Represents the root of the current directory (e.g., /my-heros-journey/)
+  './index.html',
+  './style.css',
+  './app.js',
+  './boss.js',
+  './icons/icon-192x192.png',
+  './icons/icon-512x512.png'
 ];
 
 self.addEventListener('install', event => {
