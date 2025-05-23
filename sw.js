@@ -1,5 +1,5 @@
 // sw.js - very basic for installability and minimal offline
-const CACHE_NAME = 'my-hero-v1'; // Consider incrementing cache name to v2 after these changes to force update
+const CACHE_NAME = 'my-hero-v2'; // Consider incrementing cache name to v2 after these changes to force update
 const urlsToCache = [
   './', // Represents the root of the current directory (e.g., /my-heros-journey/)
   './index.html',
