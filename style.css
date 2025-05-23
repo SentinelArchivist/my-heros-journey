@@ -1,4 +1,14 @@
 /* Basic reset and fonts */
+:root {
+    --color-primary: #2c3e50;
+    --color-secondary: #34495e;
+    --color-accent: #f1c40f;
+    --color-success: #27ae60;
+    --color-background: #f5e6d3;
+    --color-text: #2c3e50;
+    --color-border: #8b4513;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,11 +16,13 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Lato', sans-serif;
     line-height: 1.6;
     padding: 20px;
     max-width: 800px;
     margin: 0 auto;
+    background-color: var(--color-background);
+    color: var(--color-text);
 }
 
 /* Header styles */
@@ -20,7 +32,57 @@ header {
 }
 
 h1 {
-    color: #2c3e50;
+    font-family: 'Cinzel', serif;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Player Stats Styles */
+.player-stats {
+    background-color: var(--color-secondary);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 400px;
+    border: 2px solid var(--color-border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.player-stats h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.xp-bar-container {
+    position: relative;
+    background-color: #2c3e50;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.xp-bar {
+    position: absolute;
+    height: 100%;
+    background-color: #2ecc71;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.xp-bar-container p {
+    position: relative;
+    text-align: center;
+    color: white;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 20px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 /* Quest input section */
@@ -28,35 +90,83 @@ h1 {
     margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid var(--color-border);
 }
 
 input {
-    padding: 0.5rem;
-    border: 1px solid #ddd;
+    padding: 0.8rem;
+    border: 2px solid var(--color-border);
     border-radius: 4px;
     font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--color-text);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 5px rgba(241, 196, 15, 0.3);
 }
 
 button {
-    padding: 0.5rem 1rem;
-    background-color: #3498db;
+    padding: 0.8rem 1.2rem;
+    background-color: var(--color-secondary);
     color: white;
-    border: none;
+    border: 2px solid var(--color-border);
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: var(--color-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+#addQuestButton {
+    background-color: var(--color-accent);
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Vertically align icon and text */
+    justify-content: center; /* Horizontally center content */
+    gap: 0.5rem; /* Space between icon and text */
+}
+
+#addQuestButton:hover {
+    background-color: #0056b3; /* Darker shade for hover */
 }
 
 /* Quest list styles */
 .quest-list {
-    background-color: #f8f9fa;
-    padding: 1rem;
-    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid var(--color-border);
 }
 
 #questList {
@@ -64,11 +174,49 @@ button:hover {
 }
 
 #questList li {
-    padding: 0.5rem;
-    border-bottom: 1px solid #ddd;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-border);
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    align-items: flex-start; /* Align items to top */
+    gap: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-width: 0; /* Prevent flex item from overflowing */
+}
+
+.quest-info {
+    display: flex;
+    align-items: flex-start; /* Align items to top */
+    flex: 1;
+    min-width: 0; /* Allow text truncation */
+    gap: 1rem;
+}
+
+.quest-title-container {
+    flex: 1;
+    min-width: 0; /* Enable text truncation */
+}
+
+.quest-title {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.quest-description {
+    font-size: 0.9em;
+    color: #666;
+    white-space: normal;
+    word-break: break-word;
+}
+
+#questList li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #questList li:last-child {
@@ -77,4 +225,574 @@ button:hover {
 
 .complete-checkbox {
     margin-right: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.complete-checkbox:hover {
+    transform: scale(1.1);
+}
+
+/* Streak counter styles */
+.streak-counter {
+    color: #e67e22;
+    font-size: 0.9rem;
+    font-family: 'Cinzel', serif;
+    padding: 0.3rem 0.6rem;
+    background-color: rgba(230, 126, 34, 0.1);
+    border-radius: 4px;
+    border: 1px solid rgba(230, 126, 34, 0.2);
+    white-space: nowrap;
+    margin-left: auto; /* Push to the right */
+    flex-shrink: 0; /* Prevent shrinking */
+    align-self: center; /* Vertically center */
+    margin-top: 0.25rem; /* Match title's top spacing */
+}
+
+/* New Day button styles */
+#newDayButton {
+    background-color: #9b59b6;
+    margin-top: 0.5rem;
+}
+
+#newDayButton:hover {
+    background-color: #8e44ad;
+}
+
+/* Notifications */
+@keyframes notificationIn {
+    0% { transform: translate(-50%, 100px); opacity: 0; scale: 0.8; }
+    100% { transform: translate(-50%, 20px); opacity: 1; scale: 1; }
+}
+
+@keyframes notificationStay {
+    0%, 100% { transform: translate(-50%, 20px); }
+}
+
+@keyframes notificationOut {
+    0% { transform: translate(-50%, 20px); opacity: 1; scale: 1; }
+    100% { transform: translate(-50%, -100px); opacity: 0; scale: 0.8; }
+}
+
+@keyframes notificationGlow {
+    0%, 100% { box-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-accent); }
+    50% { box-shadow: 0 0 20px var(--color-accent), 0 0 30px var(--color-accent); }
+}
+
+.level-up-notification,
+.loot-notification,
+.effect-notification {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 1.2rem 2.4rem;
+    border-radius: 8px;
+    font-weight: bold;
+    font-family: 'Cinzel', serif;
+    border: 2px solid var(--color-accent);
+    animation: 
+        notificationIn 0.5s ease-out forwards,
+        notificationStay 2s ease-in-out 0.5s forwards,
+        notificationOut 0.5s ease-in 2.5s forwards,
+        notificationGlow 1.5s ease-in-out infinite;
+    z-index: 1000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+    white-space: pre-line;
+    pointer-events: none;
+}
+
+.level-up-notification {
+    background-color: var(--color-secondary);
+}
+
+.loot-notification {
+    background-color: #9b59b6;
+}
+
+.effect-notification {
+    background-color: #f1c40f;
+    color: #2c3e50;
+}
+
+/* Inventory */
+.inventory-section {
+    background-color: var(--color-background-light);
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.inventory-section h2 {
+    color: var(--color-text);
+    font-family: 'Cinzel', serif;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.inventory-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.inventory-item {
+    background-color: var(--color-background);
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inventory-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inventory-item .item-name {
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    color: var(--color-text);
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inventory-item .used-badge {
+    background-color: #7f8c8d;
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    margin-left: 0.5rem;
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.inventory-item .item-description {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+}
+
+.use-item-button {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-accent);
+    color: #2c3e50;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    align-self: flex-start;
+}
+
+.use-item-button:hover {
+    background-color: #f1c40f;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.use-item-button:active {
+    transform: translateY(0);
+}
+
+.inventory-item.common {
+    border-color: #95a5a6;
+}
+
+.inventory-item.uncommon {
+    border-color: #2ecc71;
+    border-width: 2px;
+    background-image: linear-gradient(to bottom right, rgba(46, 204, 113, 0.05), transparent);
+}
+
+.inventory-item.rare {
+    border-color: #3498db;
+    border-width: 2px;
+    background-image: linear-gradient(to bottom right, rgba(52, 152, 219, 0.1), transparent);
+    position: relative;
+    overflow: hidden;
+}
+
+.inventory-item.rare::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) rotate(30deg); }
+    20% { transform: translateX(100%) rotate(30deg); }
+    100% { transform: translateX(100%) rotate(30deg); }
+}
+
+.empty-inventory {
+    text-align: center;
+    color: var(--color-text-light);
+    font-style: italic;
+    grid-column: 1 / -1;
+    padding: 3rem 1rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    border: 2px dashed var(--color-border);
+}
+
+/* Boss Battle Styles */
+.boss-section {
+    background-color: var(--color-background-light);
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.boss-container {
+    text-align: center;
+}
+
+.boss-container h2 {
+    color: var(--color-text);
+    font-family: 'Cinzel', serif;
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.boss-container h3 {
+    color: #c0392b;
+    font-family: 'Cinzel', serif;
+    margin: 0 0 1.5rem 0;
+    font-size: 1.3rem;
+}
+
+.boss-hp-container {
+    background-color: #2c3e50;
+    height: 25px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--color-border);
+}
+
+.boss-hp-bar {
+    height: 100%;
+    background-color: #e74c3c;
+    width: 100%;
+    transition: width 0.5s ease;
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.1) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.1) 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 50px 50px;
+    animation: boss-hp-animation 2s linear infinite;
+}
+
+@keyframes boss-hp-animation {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 0; }
+}
+
+.boss-hp-container p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.boss-tasks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+}
+
+.boss-task {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid var(--color-border);
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1rem;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.boss-task.complete {
+    background-color: rgba(46, 204, 113, 0.1);
+    border-color: #27ae60;
+}
+
+.task-description {
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+.task-progress {
+    color: #8e44ad;
+    font-weight: bold;
+    padding: 0.3rem 0.6rem;
+    background-color: rgba(142, 68, 173, 0.1);
+    border-radius: 4px;
+}
+
+.task-damage {
+    color: #c0392b;
+    font-weight: bold;
+    padding: 0.3rem 0.6rem;
+    background-color: rgba(192, 57, 43, 0.1);
+    border-radius: 4px;
+}
+
+.boss-defeated {
+    background-color: #27ae60;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: defeated-pulse 2s infinite;
+}
+
+@keyframes defeated-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.boss-defeated-notification {
+    background-color: #c0392b;
+}
+
+/* Notification System */
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast-notification {
+    background-color: var(--color-secondary);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    max-width: 350px;
+}
+
+.toast-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toast-notification.info {
+    background-color: var(--color-primary);
+}
+
+.toast-notification.success {
+    background-color: var(--color-success);
+}
+
+.toast-notification.error {
+    background-color: #e74c3c; /* Using a distinct error color */
+}
+
+.toast-notification.boss-defeated-notification {
+    background-color: #c0392b; /* Keeping original boss defeated color */
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Old notification styles (to be removed or refactored if PlayerStats.showNotification is fully updated) */
+@keyframes notificationIn {
+    0% { transform: translate(-50%, 100px); opacity: 0; scale: 0.8; }
+    100% { transform: translate(-50%, 20px); opacity: 1; scale: 1; }
+}
+
+@keyframes notificationStay {
+    0%, 100% { transform: translate(-50%, 20px); }
+}
+
+@keyframes notificationOut {
+    0% { transform: translate(-50%, 20px); opacity: 1; scale: 1; }
+    100% { transform: translate(-50%, -100px); opacity: 0; scale: 0.8; }
+}
+
+@keyframes notificationGlow {
+    0%, 100% { box-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-accent); }
+    50% { box-shadow: 0 0 20px var(--color-accent), 0 0 30px var(--color-accent); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .inventory-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .inventory-item {
+        padding: 1rem;
+    }
+
+    .boss-task {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+/* Additional Responsive Adjustments for smaller screens */
+@media (max-width: 600px) {
+    body {
+        padding: 0.5rem;
+        font-size: 0.9rem; /* Slightly reduce base font size */
+    }
+
+    main {
+        padding: 0.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    section {
+        padding: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .add-quest-container input,
+    .add-quest-container button, /* Ensure this applies to the button as well */
+    #addQuestButton /* Explicitly target for full width on mobile */ {
+        width: 100%;
+        box-sizing: border-box; /* Ensure padding doesn't break width */
+    }
+
+    .quest-item {
+        padding: 0.6rem;
+    }
+
+    .quest-title {
+        font-size: 0.95rem;
+    }
+
+    .quest-description {
+        font-size: 0.8rem;
+    }
+
+    .streak-counter {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .player-stats-grid {
+        grid-template-columns: 1fr; /* Stack stats on smallest screens */
+        gap: 0.3rem;
+    }
+
+    .stat-item p {
+        font-size: 0.9rem;
+    }
+
+    .inventory-item {
+        padding: 0.8rem;
+    }
+
+    .inventory-item .item-name {
+        font-size: 0.95rem;
+    }
+
+    .inventory-item .item-description {
+        font-size: 0.8rem;
+    }
+
+    .boss-container h3 {
+        font-size: 1.1rem;
+    }
+
+    .boss-hp-container p {
+        font-size: 0.85rem;
+    }
+
+    .boss-task {
+        padding: 0.5rem;
+    }
+
+    .boss-task .task-description,
+    .boss-task .task-progress,
+    .boss-task .task-damage {
+        font-size: 0.8rem;
+    }
+
+    .notification-container {
+        top: 10px;
+        right: 10px;
+        gap: 5px;
+    }
+
+    .toast-notification {
+        padding: 10px 15px;
+        font-size: 0.85rem;
+    }
 }
